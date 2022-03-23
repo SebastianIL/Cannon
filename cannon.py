@@ -23,8 +23,10 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+
+        # Se redujo la división para aumentar la velocidad del proyectil
+        speed.x = (x + 200) / 5
+        speed.y = (y + 200) / 5
 
 
 def inside(xy):
@@ -54,11 +56,12 @@ def move():
         target = vector(200, y)
         targets.append(target)
 
+    # Se cambia target.x para aumentar velocidad de velocidad los objetivos
     for target in targets:
-        target.x -= 0.5
+        target.x -= 2
 
     if inside(ball):
-        speed.y -= 0.35
+        speed.y -= 1
         ball.move(speed)
 
     dupe = targets.copy()
@@ -75,7 +78,7 @@ def move():
             #Se cambia el indice para que el juego no termine
             targets[targets.index(target)].x=200
 
-    ontimer(move, 50)
+    ontimer(move, 20) #Se cambia a 10 para que se aumente la velocidad de ambos
 
 
 setup(420, 420, 370, 0)
