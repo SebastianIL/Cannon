@@ -72,7 +72,8 @@ def move():
 
     for target in targets:
         if not inside(target):
-            return
+            #Se cambia el indice para que el juego no termine
+            targets[targets.index(target)].x=200
 
     ontimer(move, 50)
 
